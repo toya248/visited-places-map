@@ -111,7 +111,6 @@
       align-items: center;
       justify-content: center;
     }
-    #modal-overlay.active { display: flex; }
 
     #modal {
       background: white;
@@ -379,7 +378,7 @@ function openAdd(latlng, prefill = '') {
   document.getElementById('f-note').value     = '';
   document.getElementById('btn-delete').style.display = 'none';
   setRating(0);
-  document.getElementById('modal-overlay').classList.add('active');
+  document.getElementById('modal-overlay').style.display = 'flex';
   setTimeout(() => document.getElementById('f-name').focus(), 50);
 }
 
@@ -394,11 +393,12 @@ window.openEdit = function(id) {
   document.getElementById('f-note').value     = p.note || '';
   document.getElementById('btn-delete').style.display = 'inline-block';
   setRating(p.rating || 0);
-  document.getElementById('modal-overlay').classList.add('active');
+  document.getElementById('modal-overlay').style.display = 'flex';
 };
 
 function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('active');
+  document.getElementById('modal-overlay').style.display = 'none';
+  document.getElementById('search-container').style.display = 'flex';
   pendingLL = null; editingId = null;
 }
 
